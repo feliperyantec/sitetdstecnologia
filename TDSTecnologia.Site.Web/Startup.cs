@@ -25,7 +25,7 @@ namespace TDSTecnologia.Site.Web
             Configuration = configuration;
         }
 
-        public void Configure(IServiceCollection services)
+        public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
             services.AddEntityFrameworkNpgsql()
