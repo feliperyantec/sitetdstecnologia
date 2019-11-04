@@ -11,9 +11,9 @@ namespace TDSTecnologia.Site.Infrastructure.Services
             _context = context;
         }
 
-        protected void SaveChangesApp()
+        protected bool SaveChangesApp()
         {
-            _context.SaveChanges();
+          return _context.SaveChanges() == 1;
         }
     }
 }
