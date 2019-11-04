@@ -1,4 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity;
+using System.Collections.Generic;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using TDSTecnologia.Site.Core.Entities;
 using TDSTecnologia.Site.Infrastructure.Data;
@@ -38,6 +40,17 @@ namespace TDSTecnologia.Site.Infrastructure.Services
         public async Task Logout()
         {
             await _usuarioRepository.Logout();
+        }
+
+        public async Task<List<string>> ListarPermissoesPorUsuario(Usuario usuario)
+        {
+            return await _usuarioRepository.ListarPermissoesPorUsuario(usuario);
+        }
+
+        public async Task<Usuario> UsuarioLogado(ClaimsPrincipal user)
+        {
+            Usuario usuario = await _usuarioRepository.UsuarioLogado(user);
+            return usuario;
         }
     }
 }

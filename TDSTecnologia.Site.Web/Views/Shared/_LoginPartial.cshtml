@@ -7,17 +7,16 @@
 
     Usuario usuarioLogado = await UserManager.GetUserAsync(User);
 
-    <div class="btn-group" role="group" aria-label="Grupo de botões com dropdown aninhado">
-
-        <div class="btn-group" role="group">
-            <button id="btnGroupDrop1" type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <text>@usuarioLogado.Nome</text>
-            </button>
-            <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-                <a class="dropdown-item" asp-controller="Usuario" asp-action="Logout"><i class="fas fa-sign-out-alt"></i> Sair</a>
-            </div>
+    <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <text>@usuarioLogado.Nome</text>
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <a class="dropdown-item" asp-controller="Usuario" asp-action="Perfil"><i class="fas fa-user-circle"></i> Perfil</a>
+            <a class="dropdown-item" asp-controller="Usuario" asp-action="Logout"><i class="fas fa-sign-out-alt"></i> Sair</a>
         </div>
-    </div>
+    </li>
+
 }
 else
 {

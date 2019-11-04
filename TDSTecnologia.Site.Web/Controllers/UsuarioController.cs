@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using TDSTecnologia.Site.Core.Entities;
 using TDSTecnologia.Site.Infrastructure.Security;
@@ -98,6 +99,19 @@ namespace TDSTecnologia.Site.Web.Controllers
                 }
             }
             return View(model);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> Perfil()
+        {
+            Usuario usuario = await _usuarioService.UsuarioLogado(User);
+            List<string> permissoes = await _usuarioService.ListarPermissoesPorUsuario(usuario);
+            PerfilViewModel perfil = new PerfilViewModel()
+            {
+                Permissoes = permissoes
+            };
+
+            return View("Perfil", perfil);
         }
     }
 }
